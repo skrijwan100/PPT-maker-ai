@@ -1,3 +1,41 @@
-.input-box::placeholder{
-    color: white;
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Faculty+Glyphic&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Play:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik+Vinyl&family=Rubik:ital,wght@0,300..900;1,300..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+.input-box::placeholder {
+    color: black;
+    font-family: "Alegreya Sans SC", serif;
+}
+
+.loginbtn {
+
+    &:hover {
+        background-color: rgb(148, 226, 31) !important;
+    }
+
+    &:active {
+        background-color: rgb(130, 189, 42) !important;
+
+    }
+}
+
+.inner-box {
+    width: 340px;
+    height: 280px;
+    background-color: #680ce7;
+    border-radius: 20px;
+    border: 1px solid white;
+    /* box-shadow:0px 0px 15px 4px white; */
+}
+
+.GenerateBtn {
+    transition: all 0.3s ease-in-out;
+    border: 2px solid #680ce7 !important;
+    background-color: white !important;
+    color: #680ce7 !important;
+
+    &:hover {
+        color: white !important;
+        background-color: #680ce7 !important;
+        border: 2px solid white !important;
+
+    }
 }
