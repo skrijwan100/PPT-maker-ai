@@ -22,8 +22,8 @@
     height: 280px;
     background-color: #680ce7;
     border-radius: 20px;
-    border: 1px solid white;
-    /* box-shadow:0px 0px 15px 4px white; */
+    /* border: 1px solid white; */
+    box-shadow:0px 0px 15px 4px white;
 }
 
 .GenerateBtn {
@@ -38,4 +38,17 @@
         border: 2px solid white !important;
 
     }
+}
+
+.pagebtn{
+    color: white;
+    font-size:20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: pointer;
+    padding: 5px;
+}
+.page-active{
+    background-color: #680ce7;
+    border-radius: 10px;
+    
 }

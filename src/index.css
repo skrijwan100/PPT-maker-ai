@@ -6,3 +6,30 @@ body{
   background-color: #0a2329; 
   /* #0a2329 #680ce7 */
 }
+body::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--hover);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--backgroundColor);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+body::-webkit-scrollbar-track {
+  background-color: rgb(219, 218, 218);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(62, 62, 62);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
