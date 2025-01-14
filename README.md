@@ -7,3 +7,4 @@
    cd PPT-maker-ai
    npm install
    npm start dev
+   

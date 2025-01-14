@@ -7,6 +7,7 @@ import {
   Route,
 } from "react-router-dom";
 import About from './components/About';
+import Footer from './components/Footer';
 export default function App() {
   return (
     <div>
@@ -16,6 +17,7 @@ export default function App() {
       <Route path='/' element={<Mainpage/>} />
       <Route path='/about' element={<About/>} />
     </Routes>
+    <Footer/>
     </BrowserRouter>
     </div>
   )

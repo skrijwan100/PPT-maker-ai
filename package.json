@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
+    "convert-css-color-name-to-hex": "^0.1.1",
     "generative-ai": "^0.1.4",
     "pptxgenjs": "^3.12.0",
     "react": "^18.3.1",

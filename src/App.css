@@ -52,3 +52,12 @@
     border-radius: 10px;
     
 }
+.GeneratepptBtn{
+    transition: all 0.3s ease-in-out;
+    &:hover{
+        background-color: #0a2329 !important;
+        color: white !important;
+        border: 2px solid white !important;
+
+    }
+}

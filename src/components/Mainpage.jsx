@@ -2,27 +2,48 @@ import React, { useState } from 'react'
 import { GoogleGenerativeAI } from "@google/generative-ai"
 import loder from "../assets/loder.gif"
 import ReactMarkdown from "react-markdown";
+import convertCssColorNameToHex from 'convert-css-color-name-to-hex';
 import "../App.css"
 import pptxgen from "pptxgenjs";
 export default function App() {
   const [answer, setanswer] = useState()
-  const [Topic, setTopic] = useState({ tname: "", slidenumber: "" })
+  const [Topic, setTopic] = useState({ tname: "", slidenumber: "",pptcolor:"" })
   const [showloder, setshowloder] = useState(false)
+  
   const handlepptgen = () => {
+    // 2. Fetch or Generate AI content (Placeholder for now)
+    const processGeminiResponse = (response) => {
+      // Split response into slides
+      const slides = response.split("**Slide ").slice(1);
+    
+      // Map each slide into the desired format
+      const slideContent = slides.map((slide, index) => {
+        // Extract title from '**Title:**' or first line after slide header
+        const titleMatch = slide.match(/\*\*Title:\*\s*(.+)/) || slide.match(/^(.*?:)/m);
+        const title = titleMatch ? titleMatch[1].trim() : `Slide ${index + 1}`;
+    
+        // Extract remaining content as text
+        const text = slide.replace(/\*\*Title:\*\s*.+\n ?/g, "").trim()
+    
+        return { title, text };
+      });
+    
+      return slideContent;
+    };
+    const slideContent = processGeminiResponse(answer);
+  
+  console.log(slideContent);
     let pptx = new pptxgen();
 
-     // 2. Fetch or Generate AI content (Placeholder for now)
-     const slideContent = [
-      { title: "Slide 1", text: "Welcome to AI-powered PPT Maker!" },
-      { title: "Slide 2", text: "Here's how it works:\n1. React UI\n2. AI-generated text\n3. Dynamic PPT creation" },
-    ];
   
     // 3. Add Slides and Content
+    const ppthexcolor=convertCssColorNameToHex(Topic.pptcolor);
+
     slideContent.forEach((content) => {
       const slide = pptx.addSlide();
-      slide.background = { color: "FF3399", transparency: 50 }
+      slide.background = { color:ppthexcolor , transparency: 50 }
       slide.addText(content.title, { x: 0.5, y: 0.5, fontSize: 26, bold: true, align: pptx.AlignH.center,});
-      slide.addText(content.text, { x: 0.5, y: 1, fontSize: 14 });
+      slide.addText(content.text, { x: 1, y: 3.2 ,fontSize: 14 });
     });
 
     // 4. Export PPT File
@@ -37,11 +58,13 @@ export default function App() {
     const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", role: "I am a PowerPoint presentation creator AI designed to assist in generating structured slide content for your website. My responses will always follow a clear and professional format, with content segmented into slides. Each slide will have a title and body, and optional elements like bullet points, images, or charts can be specified upon request" });
 
-    const prompt = `${Topic.tname} create ${Topic.slidenumber} slide on this topic for my ppt and for every slide provide a img url`;
+    const prompt = `${Topic.tname} create ${Topic.slidenumber} slide on this topic for my ppt and give response in a way so each slide has a clear title and structured content.`;
 
     const result = await model.generateContent(prompt);
     setshowloder(false)
-    setanswer(result.response.text())
+    const responseText = await result.response.text(); 
+    setanswer(responseText)
+
   }
 
   return (
@@ -65,8 +88,9 @@ export default function App() {
 
         </div>
       </div>
-      {answer ? <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <button onClick={handlepptgen} style={{ height: "50px", width: "100px" }}>Genatare ppt</button>
+      {answer ? <div style={{ display: "flex", alignItems: "center", justifyContent: "center",flexDirection:"column",gap:"10px" }}>
+        <input  className='input-box' style={{width:"200px",height:"35px",borderRadius:"10px",border:"2px solid white",outline:"none",padding:"6px",backgroundColor:"#853aed"}} type="text" name="pptcolor" id="" placeholder='Enter your ppt background color' value={Topic.pptcolor} onChange={onchange}  />
+        <button className='GeneratepptBtn' onClick={handlepptgen} style={{ height: "40px", width: "100px", borderRadius: "10px", outline: "none", border: "none", backgroundColor: "white", cursor: "pointer", color: "#680ce7" }}>Generate</button>
 
       </div> : ""}
 
