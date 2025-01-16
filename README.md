@@ -5,6 +5,7 @@
    ```bash
    git clone https://github.com/skrijwan100/PPT-maker-ai.git
    cd PPT-maker-ai
+   cd client
    npm install
    npm start dev
    
