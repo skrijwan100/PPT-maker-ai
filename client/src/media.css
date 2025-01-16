@@ -1,0 +1,5 @@
+@media (max-width: 430px) {
+    .all-button{
+        display: none !important;
+    }
+  }

@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import About from './components/About';
 import Footer from './components/Footer';
+import "./media.css"
 export default function App() {
   return (
     <div>

@@ -3,6 +3,7 @@ import pagelogo from "../assets/pptai_logo.jpeg"
 import "../App.css"
 import { useLocation } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import "../media.css"
 
 export default function Navbar() {
 const location = useLocation()
@@ -18,8 +19,9 @@ const location = useLocation()
            <Link to="/about" style={{textDecoration:"none"}}><li className={`pagebtn ${location.pathname==="/about"?"page-active":""}`}>About</li></Link> 
           </ul>
         </div>
-        <div className="button">
-          <button className='loginbtn' style={{width:"88px",height:"38px",border:"none",outline:"none",backgroundColor:"greenyellow",borderRadius:"9px",cursor:"pointer"}}>Login</button>
+        <div className="all-button" style={{display:"flex", gap:"4px",justifyContent:"center"}}>
+          <button className='loginbtn' style={{ height: "40px", width: "100px", borderRadius: "10px", outline: "none",border:"none", backgroundColor: "white", cursor: "pointer", color: "#680ce7" }}>Singup</button>
+          <button className='loginbtn' style={{ height: "40px", width: "100px", borderRadius: "10px", outline: "none",border:"none", backgroundColor: "white", cursor: "pointer", color: "#680ce7" }}>Login</button>
         </div>
       </div>
     </div>
