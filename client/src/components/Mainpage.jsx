@@ -90,7 +90,7 @@ export default function App() {
       </div>
       {answer ? <div style={{ display: "flex", alignItems: "center", justifyContent: "center",flexDirection:"column",gap:"10px" }}>
         <input  className='input-box' style={{width:"200px",height:"35px",borderRadius:"10px",border:"2px solid white",outline:"none",padding:"6px",backgroundColor:"#853aed"}} type="text" name="pptcolor" id="" placeholder='Enter your ppt background color' value={Topic.pptcolor} onChange={onchange}  />
-        <button className='GeneratepptBtn' onClick={handlepptgen} style={{ height: "40px", width: "100px", borderRadius: "10px", outline: "none", border: "none", backgroundColor: "white", cursor: "pointer", color: "#680ce7" }}>Generate</button>
+        <button className='GeneratepptBtn' onClick={handlepptgen} style={{ height: "40px", width: "100px", borderRadius: "10px", outline: "none", border: "none", backgroundColor: "white", cursor: "pointer", color: "#680ce7" }}>Make ppt</button>
 
       </div> : ""}
 
