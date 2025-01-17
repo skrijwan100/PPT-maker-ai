@@ -5,8 +5,11 @@ import { useLocation } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import "../media.css"
 
-export default function Navbar() {
+export default function Navbar({startLoader}) {
 const location = useLocation()
+const handleclick=()=>{
+  startLoader()
+}
   return (
     <div>
       <div className="mian-box" style={{display:"flex",justifyContent:"space-between",margin:"6px 19px"}}>
@@ -15,13 +18,13 @@ const location = useLocation()
         </div>
         <div className="pages">
           <ul style={{display:"flex",listStyle:"none",gap:"20px"}}>
-           <Link to="/" style={{textDecoration:"none"}}><li className={`pagebtn ${location.pathname==="/"?"page-active":""}`}>Home</li></Link> 
-           <Link to="/about" style={{textDecoration:"none"}}><li className={`pagebtn ${location.pathname==="/about"?"page-active":""}`}>About</li></Link> 
+           <Link to="/" style={{textDecoration:"none"}}><li onClick={location.pathname==="/"?null:handleclick} className={`pagebtn ${location.pathname==="/"?"page-active":""}`}>Home</li></Link> 
+           <Link to="/about" style={{textDecoration:"none"}}><li onClick={location.pathname==="/about"?null:handleclick} className={`pagebtn ${location.pathname==="/about"?"page-active":""}`}>About</li></Link> 
           </ul>
         </div>
         <div className="all-button" style={{display:"flex", gap:"4px",justifyContent:"center"}}>
-          <button className='loginbtn' style={{ height: "40px", width: "100px", borderRadius: "10px", outline: "none",border:"none", backgroundColor: "white", cursor: "pointer", color: "#680ce7" }}>Singup</button>
-          <button className='loginbtn' style={{ height: "40px", width: "100px", borderRadius: "10px", outline: "none",border:"none", backgroundColor: "white", cursor: "pointer", color: "#680ce7" }}>Login</button>
+        <Link to="/singup">  <button onClick={location.pathname==="/singup"?null:handleclick} className='loginbtn' style={{ height: "40px", width: "100px", borderRadius: "10px", outline: "none",border:"none", backgroundColor: "white", cursor: "pointer", color: "#680ce7" }}>Singup</button></Link>
+        <Link to="/login">  <button onClick={location.pathname==="/login"?null:handleclick} className='loginbtn' style={{ height: "40px", width: "100px", borderRadius: "10px", outline: "none",border:"none", backgroundColor: "white", cursor: "pointer", color: "#680ce7" }}>Login</button></Link>
         </div>
       </div>
     </div>
