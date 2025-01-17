@@ -89,7 +89,18 @@ export default function App() {
         </div>
       </div>
       {answer ? <div style={{ display: "flex", alignItems: "center", justifyContent: "center",flexDirection:"column",gap:"10px" }}>
-        <input  className='input-box' style={{width:"200px",height:"35px",borderRadius:"10px",border:"2px solid white",outline:"none",padding:"6px",backgroundColor:"#853aed"}} type="text" name="pptcolor" id="" placeholder='Enter your ppt background color' value={Topic.pptcolor} onChange={onchange}  />
+        <input list='color-list' className='input-box' style={{width:"200px",height:"35px",borderRadius:"10px",border:"2px solid white",outline:"none",padding:"6px",backgroundColor:"#853aed"}} type="text" name="pptcolor" id="" placeholder='Enter your ppt background color' value={Topic.pptcolor} onChange={onchange}  />
+        <datalist id="color-list">
+        <option value="red"></option>
+        <option value="yellow"></option>
+        <option value="blue"></option>
+        <option value="green"></option>
+        <option value="aqua"></option>
+        <option value="violet"></option>
+        <option value="seashell"></option>
+        <option value="mediumpurple"></option>
+        <option value="lightsteelblue"></option>
+        </datalist>
         <button className='GeneratepptBtn' onClick={handlepptgen} style={{ height: "40px", width: "100px", borderRadius: "10px", outline: "none", border: "none", backgroundColor: "white", cursor: "pointer", color: "#680ce7" }}>Make ppt</button>
 
       </div> : ""}
