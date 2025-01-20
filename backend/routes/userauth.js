@@ -4,15 +4,15 @@ const { body, validationResult } = require('express-validator');
 const bcrypt= require("bcrypt")
 const User = require("../models/User");
 router.post("/register", [
-    body("name", "Enter your name").exists(),
+    body("name", "Enter your name").isLength({min:3}),
     body("email", "Enter a valid email").isEmail(),
-    body("profassion", "Enter your profassion").exists(),
-    body("password", "Enter your password more then 5 word").isLength({})
+    body("profassion", "Enter your profassion").isLength({min:3}),
+    body("password", "Enter your password more then 5 word").isLength({min:5})
 ], async (req, res) => {
     try {
 
 
-        const { name, email, profassion, password } = req.body()
+        const { name, email, profassion, password } = req.body;
         const error = validationResult(req)
         if (!error.isEmpty()) {
             return res.status(400).json({ error: error.array() });
@@ -40,4 +40,9 @@ router.post("/register", [
 
 })
 
+// router.post("/login",[
+//     body("email",)
+// ],async(req,res)=>{
+
+// })
 module.exports = router
