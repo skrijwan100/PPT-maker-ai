@@ -6,7 +6,7 @@ const server= require("./db")
 server()
 require('dotenv').config();
 const corsOptions = {
-  origin: ' http://localhost:5173', // Allow only requests from this origin
+  origin:process.env.FRONTEND_URL, // Allow only requests from this origin
   methods: 'GET,POST', // Allow only these methods
   allowedHeaders: ['Content-Type', 'Authorization'] // Allow only these headers
 };
@@ -20,5 +20,6 @@ app.get("/",(req,res)=>{
 })
 
 app.listen(process.env.PORT,()=>{
+    console.log(process.env.FRONTEND_URL)
     console.log(`the app is run in ${process.env.PORT} port `)
 })

@@ -13,9 +13,11 @@ import "./media.css"
 import Login from './components/Login';
 import Singup from './components/Singup';
 import Loader from './components/Loder';
+import Alert from './components/Alert';
 export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [alert,setalert]=useState(null)
   const startLoader = () => {
     setProgress(0);
     setIsLoading(true);
@@ -31,16 +33,23 @@ export default function App() {
       });
     }, 50);
   };
+  const showAlert = (msg, ty) => {
+    setalert({
+      msg: msg,
+      ty: ty
+    })
+  };
   return (
     <div>
         <BrowserRouter>
         <Loader isLoading={isLoading} progress={progress}  />
+      <Alert alert={alert}/>
       <Navbar startLoader={startLoader}/>
     <Routes>
       <Route path='/' element={<Mainpage/>} />
       <Route path='/about' element={<About/>} />
-      <Route path='/login' element={<Login/>} />
-      <Route path='/singup' element={<Singup/>} />
+      <Route path='/login' element={<Login showAlert={showAlert}/>} />
+      <Route path='/singup' element={<Singup showAlert={showAlert}/>} />
     </Routes>
     <Footer/>
     </BrowserRouter>

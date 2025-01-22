@@ -41,8 +41,13 @@ router.post("/register", [
 })
 
 // router.post("/login",[
-//     body("email",)
+//     body("email", "Enter a valid email").isEmail(),
+//     body("password", "Enter your password").isLength({min:5})
 // ],async(req,res)=>{
 
+//     const error = validationResult(req)
+//     if (!error.isEmpty()) {
+//         return res.status(400).json({ error: error.array() });
+//     } 
 // })
 module.exports = router
