@@ -25,11 +25,11 @@ export default function Singup({ showAlert }) {
     setloder(false)
     // console.log(data)
     if (data.message === "This is alredy have a account.") {
-      showAlert("This Email is alredy exists.", "error")
+       return showAlert("This Email is alredy exists.", "error")
     }
     if(data.message === "You register done"){
-      showAlert("Singup successfully", "success")
-      naviget("/login")
+      naviget("/login") 
+      return showAlert("Singup successfully", "success")
     }
     showAlert("Fill the all from", "error")
   

@@ -1,5 +1,6 @@
 const express = require("express")
 const router = express.Router()
+const jwt= require("jsonwebtoken")
 const { body, validationResult } = require('express-validator');
 const bcrypt= require("bcrypt")
 const User = require("../models/User");
@@ -40,14 +41,28 @@ router.post("/register", [
 
 })
 
-// router.post("/login",[
-//     body("email", "Enter a valid email").isEmail(),
-//     body("password", "Enter your password").isLength({min:5})
-// ],async(req,res)=>{
+router.post("/login",[
+    body("email", "Enter a valid email").isEmail(),
+    body("password", "Enter your password").isLength({min:5})
+],async(req,res)=>{
+    const {email,password}= req.body;
+    const error = validationResult(req)
+    if (!error.isEmpty()) {
+        return res.status(400).json({ error: error.array() });
+    } 
+    const finduser= await User.findOne({email})
+    if(!finduser){
+        return res.status(404).json({"error":"You don't have any account in this email."})
 
-//     const error = validationResult(req)
-//     if (!error.isEmpty()) {
-//         return res.status(400).json({ error: error.array() });
-//     } 
-// })
+    }
+    const chakepass= await bcrypt.compare(password,finduser.password)
+    if(!chakepass){
+        return res.status(400).json({"error":"Incorrect password"})
+    }
+    const authtoken= jwt.sign({
+        user:finduser._id
+    },process.env.JWT_SERECT)
+    return res.status(200).json({"message":"Login done",authtoken})
+
+})
 module.exports = router
