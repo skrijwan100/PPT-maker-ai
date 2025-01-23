@@ -4,6 +4,7 @@ const jwt= require("jsonwebtoken")
 const { body, validationResult } = require('express-validator');
 const bcrypt= require("bcrypt")
 const User = require("../models/User");
+const fecthuser = require("../middleware/fecthuser");
 router.post("/register", [
     body("name", "Enter your name").isLength({min:3}),
     body("email", "Enter a valid email").isEmail(),
@@ -64,5 +65,21 @@ router.post("/login",[
     },process.env.JWT_SERECT)
     return res.status(200).json({"message":"Login done",authtoken})
 
+})
+
+
+router.get("/getuser",fecthuser,async(req,res)=>{
+    try {
+        const userid= req.user
+        console.log(userid)
+        const userdata= await User.findById(userid).select("-password")
+        console.log(userdata)
+        return res.status(200).json({"message":userdata})
+        
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({"error":"Intarnal server error"})
+    }
+  
 })
 module.exports = router

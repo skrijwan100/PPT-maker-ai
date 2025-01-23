@@ -7,7 +7,7 @@ import "../App.css"
 import pptxgen from "pptxgenjs";
 export default function App() {
   const [answer, setanswer] = useState()
-  const [Topic, setTopic] = useState({ tname: "", slidenumber: "",pptcolor:"" })
+  const [Topic, setTopic] = useState({ tname: "", slidenumber: "",pptcolor:"" , pptname:""})
   const [showloder, setshowloder] = useState(false)
   
   const handlepptgen = () => {
@@ -48,7 +48,7 @@ export default function App() {
 
     // 4. Export PPT File
     
-    pptx.writeFile({ fileName: "AI_PPT_Maker.pptx" });
+    pptx.writeFile({ fileName: Topic.pptname });
   }
   const onchange = (e) => {
     setTopic({ ...Topic, [e.target.name]: e.target.value })
@@ -101,6 +101,7 @@ export default function App() {
         <option value="mediumpurple"></option>
         <option value="lightsteelblue"></option>
         </datalist>
+        <input className='input-box' style={{width:"200px",height:"35px",borderRadius:"10px",border:"2px solid white",outline:"none",padding:"6px",backgroundColor:"#853aed"}} type="text" name="pptname"  placeholder='Enter your ppt file name' value={Topic.pptname} onChange={onchange}  />
         <button className='GeneratepptBtn' onClick={handlepptgen} style={{ height: "40px", width: "100px", borderRadius: "10px", outline: "none", border: "none", backgroundColor: "white", cursor: "pointer", color: "#680ce7" }}>Make ppt</button>
 
       </div> : ""}
