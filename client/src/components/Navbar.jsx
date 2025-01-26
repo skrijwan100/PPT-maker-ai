@@ -4,8 +4,9 @@ import "../App.css"
 import { useLocation } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import "../media.css"
+import user from "../assets/user.gif"
 
-export default function Navbar({startLoader}) {
+export default function Navbar({startLoader,showuser}) {
 const location = useLocation()
 const handleclick=()=>{
   startLoader()
@@ -22,6 +23,7 @@ const handleuserclick= async(e)=>{
     }
   }) 
   const userdata= await responce.json()
+  showuser(userdata.message.name,userdata.message.email,userdata.message.profassion)
   console.log(userdata)
 
 }
@@ -37,7 +39,7 @@ const handleuserclick= async(e)=>{
            <Link to="/about" style={{textDecoration:"none"}}><li onClick={location.pathname==="/about"?null:handleclick} className={`pagebtn ${location.pathname==="/about"?"page-active":""}`}>About</li></Link> 
           </ul>
         </div>
-        {localStorage.getItem("auth-token")?<div><button style={{height:"60px",width:"60px",borderRadius:"50%"}} onClick={handleuserclick}>profile</button></div>:<div className="all-button" style={{display:"flex", gap:"4px",justifyContent:"center"}}>
+        {localStorage.getItem("auth-token")?<div onClick={handleuserclick} style={{height:"42px",width:"42px",borderRadius:"50%",border:"2px solid #680ce7",display:"flex",alignItems:"center",justifyContent:"center",cursor:"pointer"}}><img style={{height:"35px",width:"35px"}} src={user} alt="" /></div>:<div className="all-button" style={{display:"flex", gap:"4px",justifyContent:"center"}}>
         <Link to="/singup">  <button onClick={location.pathname==="/singup"?null:handleclick} className='loginbtn' style={{ height: "40px", width: "100px", borderRadius: "10px", outline: "none",border:"none", backgroundColor: "white", cursor: "pointer", color: "#680ce7" }}>Singup</button></Link>
         <Link to="/login">  <button onClick={location.pathname==="/login"?null:handleclick} className='loginbtn' style={{ height: "40px", width: "100px", borderRadius: "10px", outline: "none",border:"none", backgroundColor: "white", cursor: "pointer", color: "#680ce7" }}>Login</button></Link>
         </div>}

@@ -14,10 +14,12 @@ import Login from './components/Login';
 import Singup from './components/Singup';
 import Loader from './components/Loder';
 import Alert from './components/Alert';
+import Usermodal from "./components/Usermodal"
 export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [alert,setalert]=useState(null)
+  const [usermodal,setusermodal]=useState(null)
   const startLoader = () => {
     setProgress(0);
     setIsLoading(true);
@@ -39,14 +41,24 @@ export default function App() {
       ty: ty
     })
   };
+  const showuser=(name,email,profassion)=>{
+
+    setusermodal({
+      name:name,
+      email:email,
+      profassion:profassion
+    })
+  }
+
   return (
     <div>
         <BrowserRouter>
         <Loader isLoading={isLoading} progress={progress}  />
       <Alert alert={alert}/>
-      <Navbar startLoader={startLoader}/>
+      <Navbar startLoader={startLoader} showuser={showuser}/>
+      <Usermodal usermodal={usermodal} />
     <Routes>
-      <Route path='/' element={<Mainpage/>} />
+      <Route path='/' element={<Mainpage showuser={showuser}/>} />
       <Route path='/about' element={<About/>} />
       <Route path='/login' element={<Login showAlert={showAlert}/>} />
       <Route path='/singup' element={<Singup showAlert={showAlert}/>} />

@@ -188,3 +188,39 @@
   .singup {
     height: 420px !important;
   }
+  .logoutbtn{
+    margin-top: 20px;
+    height: 40px;
+    width:100px;
+    border-radius: 10px;
+    outline: none;
+    background-color: red;
+    border:none; 
+    cursor: pointer;
+    color: white ;
+    transition: all 0.3s ease-in-out;
+    font-size: 14px;
+    &:hover{
+      background-color: white;
+      color: red;
+      border: 2px solid red !important;
+  }
+  }
+  .historybtn{
+    margin-top: 20px;
+    height: 40px;
+    width:100px;
+    border-radius: 10px;
+    outline: none;
+    background-color: rgb(1, 165, 248);
+    border:none; 
+    cursor: pointer;
+    color: white ;
+    transition: all 0.3s ease-in-out;
+    font-size: 14px;
+    &:hover{
+      background-color: white;
+      color: rgb(1, 165, 248);
+      border: 2px solid rgb(1, 165, 248) !important;
+  }
+  }
