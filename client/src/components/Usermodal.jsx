@@ -1,13 +1,16 @@
 import  { useEffect } from 'react'
 import Swal from 'sweetalert2';
 import "../App.css"
+import { useNavigate } from 'react-router-dom';
 export default function Modal(props) {
+  const naviget=useNavigate()
     const logout=()=>{
         localStorage.removeItem("auth-token")
         location.reload()
     }
-    const userhistory=()=>{
-        console.log("History")
+    const userhistory=async()=>{
+      props.startLoader()   
+      naviget("/history")
     }
   return (
     useEffect(()=>{

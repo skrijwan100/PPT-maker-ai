@@ -15,6 +15,7 @@ import Singup from './components/Singup';
 import Loader from './components/Loder';
 import Alert from './components/Alert';
 import Usermodal from "./components/Usermodal"
+import History from './components/History';
 export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -56,12 +57,13 @@ export default function App() {
         <Loader isLoading={isLoading} progress={progress}  />
       <Alert alert={alert}/>
       <Navbar startLoader={startLoader} showuser={showuser}/>
-      <Usermodal usermodal={usermodal} />
+      <Usermodal usermodal={usermodal} startLoader={startLoader} />
     <Routes>
       <Route path='/' element={<Mainpage showuser={showuser}/>} />
       <Route path='/about' element={<About/>} />
       <Route path='/login' element={<Login showAlert={showAlert}/>} />
       <Route path='/singup' element={<Singup showAlert={showAlert}/>} />
+      <Route path='/history' element={<History showAlert={showAlert}/>} />
     </Routes>
     <Footer/>
     </BrowserRouter>

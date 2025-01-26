@@ -23,7 +23,7 @@ export default function Login({ showAlert }) {
     })
     const data = await responce.json()
     setloder(false)
-    console.log(data)
+    // console.log(data)
     if (data.error === "You don't have any account in this email.") {
       return showAlert("You don't have any account", "error")
 

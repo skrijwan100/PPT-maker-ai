@@ -13,7 +13,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-app.use("/api/v1/userauth",require("./routes/userauth"))
+app.use("/api/v1/userauth",require("./routes/userauth"));
+app.use("/api/v2/userhistory",require("./routes/userhistory"))
 
 app.get("/",(req,res)=>{
   return res.status(200).json({"run":"done"})

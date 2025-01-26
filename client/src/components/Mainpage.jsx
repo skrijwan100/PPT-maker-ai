@@ -64,6 +64,19 @@ export default function App() {
     setshowloder(false)
     const responseText = await result.response.text(); 
     setanswer(responseText)
+    const url=`${import.meta.env.VITE_BACKEND_URL}/api/v2/userhistory/addhistory`
+    const token=localStorage.getItem("auth-token")
+    const responce= await fetch(url,{
+      method:"POST",
+      headers:{
+        "auth-token":token,
+        "Content-Type": "application/json"
+      },
+      body:JSON.stringify({topicname:Topic.tname,slidenumber:Topic.slidenumber,responce:responseText})
+    })
+    const data= await responce.json()
+    console.log(data)
+    
 
   }
 
