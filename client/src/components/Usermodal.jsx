@@ -11,6 +11,7 @@ export default function Modal(props) {
     const userhistory=async()=>{
       props.startLoader()   
       naviget("/history")
+      Swal.close()
     }
   return (
     useEffect(()=>{
