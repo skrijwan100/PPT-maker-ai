@@ -224,3 +224,22 @@
       border: 2px solid rgb(1, 165, 248) !important;
   }
   }
+  .deltetbtn{
+    margin-top: 20px;
+    height: 40px;
+    width:100px;
+    border-radius: 10px;
+    outline: none;
+    background-color: red;
+    border:none; 
+    cursor: pointer;
+    color: white ;
+    transition: all 0.3s ease-in-out;
+    font-size: 14px;
+    &:hover{
+      background-color: #0a2329;
+      color: red;
+      border: 2px solid red !important;
+  }
+
+  }

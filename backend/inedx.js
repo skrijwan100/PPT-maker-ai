@@ -7,7 +7,7 @@ server()
 require('dotenv').config();
 const corsOptions = {
   origin:process.env.FRONTEND_URL, // Allow only requests from this origin
-  methods: 'GET,POST', // Allow only these methods
+  methods: 'GET,POST,DELETE', // Allow only these methods
   allowedHeaders: ['Content-Type', 'Authorization','auth-token'] // Allow only these headers
 };
 app.use(cors(corsOptions));

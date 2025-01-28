@@ -39,5 +39,15 @@ router.get("/viewhistory", fecthuer, async (req, res) => {
 
 })
 
+router.delete("/deletehistory/:id",fecthuer,async(req,res)=>{
+    try {
+        await History.findByIdAndDelete(req.params.id)
+        return res.status(200).json({"message":"delete done"})
 
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ "error": "Internal server error" })
+        
+    }
+})
 module.exports = router
