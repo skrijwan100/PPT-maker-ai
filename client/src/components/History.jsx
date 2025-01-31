@@ -18,7 +18,7 @@ export default function History({showAlert}) {
                 }
             })
             const data = await responce.json()
-            console.log(data)
+            // console.log(data)
             setuserhistory(data.allhistory)
 
 
