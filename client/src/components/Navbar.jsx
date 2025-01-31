@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import pagelogo from "../assets/pptai_logo.jpeg"
 import "../App.css"
 import { useLocation } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import "../media.css"
 import user from "../assets/user.gif"
-
+import hambarger from "../assets/hambargar.png"
+import close from "../assets/close.png"
 export default function Navbar({startLoader,showuser}) {
 const location = useLocation()
+const [menu,setmenu]=useState(true)
+const handlemaue=()=>{
+  setmenu(false)
+}
+const handleclose=()=>{
+  setmenu(true)
+}
 const handleclick=()=>{
   startLoader()
 }
@@ -31,8 +39,10 @@ const handleuserclick= async(e)=>{
     <div>
       <div className="mian-box" style={{display:"flex",justifyContent:"space-between",margin:"6px 19px"}}>
         <div className="logo">
-         <img src={pagelogo} alt="" style={{height:"60px",width:"60px",borderRadius:"50%",cursor:"pointer"}}/>
+         <img className='logoimg' src={pagelogo} alt="" style={{height:"60px",width:"60px",borderRadius:"50%",cursor:"pointer"}}/>
         </div>
+        <div className={menu?"hamhide":"hamshow"} style={{display:"none"}}><img onClick={handleclose} style={{height:"43px",width:"43px"}} src={close} alt="" /></div>
+        <div className={menu?"hamshow":"hamhide"} style={{display:"none"}} ><img onClick={handlemaue} style={{height:"43px",width:"43px"}} src={hambarger} alt="" /></div>
         <div className="pages">
           <ul style={{display:"flex",listStyle:"none",gap:"20px"}}>
            <Link to="/" style={{textDecoration:"none"}}><li onClick={location.pathname==="/"?null:handleclick} className={`pagebtn ${location.pathname==="/"?"page-active":""}`}>Home</li></Link> 

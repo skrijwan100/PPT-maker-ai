@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import convertCssColorNameToHex from 'convert-css-color-name-to-hex';
 import "../App.css"
 import pptxgen from "pptxgenjs";
+// import LlamaAI from "llamaai";
 export default function App() {
   const [answer, setanswer] = useState()
   const [Topic, setTopic] = useState({ tname: "", slidenumber: "",pptcolor:"" , pptname:""})
