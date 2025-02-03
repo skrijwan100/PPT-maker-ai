@@ -17,7 +17,7 @@ app.use("/api/v1/userauth",require("./routes/userauth"));
 app.use("/api/v2/userhistory",require("./routes/userhistory"))
 
 app.get("/",(req,res)=>{
-  return res.status(200).json({"run":"done"})
+  return res.status(200).json({"run":"Your code is running"})
 })
 
 app.listen(process.env.PORT,()=>{
