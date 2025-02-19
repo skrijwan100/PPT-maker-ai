@@ -33,7 +33,7 @@ export default function App() {
     };
     const slideContent = processGeminiResponse(answer);
   
-  console.log(slideContent);
+  // console.log(slideContent);
     let pptx = new pptxgen();
 
   
@@ -76,7 +76,7 @@ export default function App() {
       body:JSON.stringify({topicname:Topic.tname,slidenumber:Topic.slidenumber,responce:responseText})
     })
     const data= await responce.json()
-    console.log(data)
+    // console.log(data)
     
 
   }
