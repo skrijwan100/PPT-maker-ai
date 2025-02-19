@@ -5,11 +5,13 @@ import ReactMarkdown from "react-markdown";
 import convertCssColorNameToHex from 'convert-css-color-name-to-hex';
 import "../App.css"
 import pptxgen from "pptxgenjs";
+import { useNavigate } from 'react-router-dom';
 // import LlamaAI from "llamaai";
-export default function App() {
+export default function App({showAlert,startLoader}) {
   const [answer, setanswer] = useState()
   const [Topic, setTopic] = useState({ tname: "", slidenumber: "",pptcolor:"" , pptname:""})
   const [showloder, setshowloder] = useState(false)
+  const naviget=useNavigate()
   
   const handlepptgen = () => {
     // 2. Fetch or Generate AI content (Placeholder for now)
@@ -55,6 +57,13 @@ export default function App() {
     setTopic({ ...Topic, [e.target.name]: e.target.value })
   }
   const handelclick = async () => {
+    const authtoken=localStorage.getItem("auth-token");
+    if(!authtoken){
+      showAlert("Login frist","error");
+      startLoader()
+      return naviget("/login")
+      
+    }
     setshowloder(true)
     const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", role: "I am a PowerPoint presentation creator AI designed to assist in generating structured slide content for your website. My responses will always follow a clear and professional format, with content segmented into slides. Each slide will have a title and body, and optional elements like bullet points, images, or charts can be specified upon request" });

@@ -59,7 +59,7 @@ export default function App() {
       <Navbar startLoader={startLoader} showuser={showuser}/>
       <Usermodal usermodal={usermodal} startLoader={startLoader} />
     <Routes>
-      <Route path='/' element={<Mainpage showuser={showuser}/>} />
+      <Route path='/' element={<Mainpage showuser={showuser} showAlert={showAlert} startLoader={startLoader}  />} />
       <Route path='/about' element={<About/>} />
       <Route path='/login' element={<Login showAlert={showAlert}/>} />
       <Route path='/singup' element={<Singup showAlert={showAlert}/>} />
