@@ -32,7 +32,7 @@ const handleuserclick= async(e)=>{
   }) 
   const userdata= await responce.json()
   showuser(userdata.message.name,userdata.message.email,userdata.message.profassion)
-  console.log(userdata)
+  // console.log(userdata)
 
 }
   return (
