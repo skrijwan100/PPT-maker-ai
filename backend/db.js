@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
-const mongoURI="mongodb://localhost:27017/ppt-maker-ai"
-// const mongoURI="mongodb+srv://rijwansk329:SKRIJWAN%402006@clusterdb.7cmvf.mongodb.net/ppt-maker-ai"
+// const mongoURI="mongodb://localhost:27017/ppt-maker-ai"
+const mongoURI="mongodb+srv://rijwansk329:SKRIJWAN%402006@clusterdb.7cmvf.mongodb.net/ppt-maker-ai"
 
 connectserver=async ()=>{
     try{
