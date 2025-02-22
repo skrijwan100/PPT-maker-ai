@@ -15,7 +15,7 @@ router.post("/addhistory", fecthuer, async (req, res) => {
         })
         const savehistory = await adduserhistory.save()
 
-        console.log(savehistory)
+        // console.log(savehistory)
         return res.status(200).json({ "message": "history add" })
 
     } catch (error) {
