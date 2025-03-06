@@ -16,6 +16,7 @@ import Loader from './components/Loder';
 import Alert from './components/Alert';
 import Usermodal from "./components/Usermodal"
 import History from './components/History';
+import Uploadfile from './components/Uploadfile';
 export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -64,6 +65,7 @@ export default function App() {
       <Route path='/login' element={<Login showAlert={showAlert}/>} />
       <Route path='/singup' element={<Singup showAlert={showAlert}/>} />
       <Route path='/history' element={<History showAlert={showAlert}/>} />
+      <Route path='/picupload' element={<Uploadfile showAlert={showAlert}/>} />
     </Routes>
     <Footer/>
     </BrowserRouter>
