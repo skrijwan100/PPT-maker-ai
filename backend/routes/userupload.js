@@ -43,7 +43,11 @@ router.post("/userpicupload", fetchUser, upload.single("profilepic"), async (req
 router.get("/sendfrontend",fetchUser,async(req,res)=>{
     const checkUser = await Uploadpic.findOne({ user: req.user });
     console.log(checkUser)
-    return res.status(200).json({"picurl":checkUser.profilePic})
+    if(checkUser){
+
+        return res.status(200).json({"picurl":checkUser.profilePic})
+    }
+    return res.status(202).json({"message":"NO pic to show"})
 
 })
 
