@@ -89,6 +89,7 @@ export default function Navbar({ startLoader, showuser }) {
           <ul style={{ display: "flex", listStyle: "none", gap: "20px" }}>
             <Link to="/" style={{ textDecoration: "none" }}><li onClick={location.pathname === "/" ? null : handleclick} className={`pagebtn ${location.pathname === "/" ? "page-active" : ""}`}>Home</li></Link>
             <Link to="/about" style={{ textDecoration: "none" }}><li onClick={location.pathname === "/about" ? null : handleclick} className={`pagebtn ${location.pathname === "/about" ? "page-active" : ""}`}>About</li></Link>
+            <Link to="/picupload" style={{ textDecoration: "none" }}><li onClick={location.pathname === "/picupload" ? null : handleclick} className={`pagebtn ${location.pathname === "/picupload" ? "page-active" : ""}`}>Uploadpic</li></Link>
           </ul>
         </div>
         {localStorage.getItem("auth-token") ? <div className="all-button" onClick={handleuserclick} style={{ height: "42px", width: "42px", borderRadius: "50%", border: "2px solid #680ce7", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>  {pic && userpic.picurl ? (
@@ -96,7 +97,7 @@ export default function Navbar({ startLoader, showuser }) {
                     <img  style={{ height: "60px", width: "60px", borderRadius: "50%", cursor: "pointer" }} src={`${import.meta.env.VITE_BACKEND_URL}${userpic.picurl}`} alt="User Pic" />
                 </div>
             ) : (
-                <p style={{ color: "white" }}>No image available</p>
+                <p style={{ color: "white",fontSize:"10px" }}>No image available</p>
             )}</div> : <div className="all-button" style={{ display: "flex", gap: "4px", justifyContent: "center" }}>
           <Link to="/singup">  <button onClick={location.pathname === "/singup" ? null : handleclick} className='loginbtn' style={{ height: "40px", width: "100px", borderRadius: "10px", outline: "none", border: "none", backgroundColor: "white", cursor: "pointer", color: "#680ce7" }}>Singup</button></Link>
           <Link to="/login">  <button onClick={location.pathname === "/login" ? null : handleclick} className='loginbtn' style={{ height: "40px", width: "100px", borderRadius: "10px", outline: "none", border: "none", backgroundColor: "white", cursor: "pointer", color: "#680ce7" }}>Login</button></Link>
