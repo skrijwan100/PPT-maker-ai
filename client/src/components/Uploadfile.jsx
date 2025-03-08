@@ -15,7 +15,7 @@ export default function Uploadfile({ showAlert }) {
         const formData = new FormData();
         formData.append("profilepic", selectedFile); // ✅ Use selectedFile, not file
         try {
-            const res = await axios.post("http://localhost:5000/api/v3/userpic/userpicupload", formData, {
+            const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v3/userpic/userpicupload`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     "auth-token":localStorage.getItem("auth-token")
