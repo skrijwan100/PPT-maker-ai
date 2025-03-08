@@ -3,7 +3,8 @@ const router=express.Router()
 const upload= require("../middleware/upload");
 const Uploadpic=require("../models/Uploadpic")
 const fetchUser =require("../middleware/fecthuser")
-
+const cloudinary = require("../config/cloudinary")
+const fs= require("fs")
 
 
 router.post("/userpicupload", fetchUser, upload.single("profilepic"), async (req, res) => {
@@ -11,22 +12,19 @@ router.post("/userpicupload", fetchUser, upload.single("profilepic"), async (req
         if (!req.file) {
             return res.status(400).json({ error: "No file uploaded" });
         }
+        const cloudinaryResponse = await cloudinary.uploader.upload(req.file.path, {
+            folder: "user_profiles", // Optional folder in Cloudinary
+          });
+          fs.unlinkSync(req.file.path);
 
-        const imgurl = `/upload/${req.file.filename}`;
+          const imgurl = cloudinaryResponse.secure_url; 
         
         // Check if user already has a profile picture
         const checkUser = await Uploadpic.findOne({ user: req.user });
         
         if (checkUser) {
-            // User already has a profile picture, update it
-            const newPic = { profilePic: imgurl };
-            
-            // Update the profile picture
-            const updatedPic = await Uploadpic.findOneAndUpdate(
-                { user: req.user },
-                { $set: newPic },
-                { new: true }
-            );
+            checkUser.profilePic = imgurl;
+            await checkUser.save();
             
             return res.status(200).json({ "message": "Profile picture updated", imgurl });
         } else {

@@ -94,7 +94,7 @@ export default function Navbar({ startLoader, showuser }) {
         </div>
         {localStorage.getItem("auth-token") ? <div className="all-button" onClick={handleuserclick} style={{ height: "42px", width: "42px", borderRadius: "50%", border: "2px solid #680ce7", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>  {pic && userpic.picurl ? (
                 <div>
-                    <img  style={{ height: "60px", width: "60px", borderRadius: "50%", cursor: "pointer" }} src={`${import.meta.env.VITE_BACKEND_URL}${userpic.picurl}`} alt="User Pic" />
+                    <img  style={{ height: "60px", width: "60px", borderRadius: "50%", cursor: "pointer" }} src={`${userpic.picurl}`} alt="User Pic" />
                 </div>
             ) : (
                 <p style={{ color: "white",fontSize:"10px" }}>No image available</p>
