@@ -13,7 +13,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
-app.use("/uploads", express.static("uploads"));
+app.use("/upload", express.static("upload"));
 
 app.use("/api/v1/userauth",require("./routes/userauth"));
 app.use("/api/v2/userhistory",require("./routes/userhistory"));
