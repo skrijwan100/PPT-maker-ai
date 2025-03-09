@@ -35,7 +35,7 @@ router.post("/userpicupload", fetchUser, upload.single("profilepic"), async (req
         }
     } catch (error) {
         console.log(error);
-        return res.status(500).json({ "error": "Internal server error" });
+        return res.status(500).json({ "error": "Internal server error",error });
     }
 });
 router.get("/sendfrontend",fetchUser,async(req,res)=>{
