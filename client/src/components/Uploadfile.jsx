@@ -26,7 +26,7 @@ export default function Uploadfile({ showAlert }) {
             // const data= await res.json()
             console.log(res.data.imgurl);
         } catch (error) {
-            console.error(error);
+            console.log(error);
             showAlert("Error uploading profile picture", "error");
         }
     }
