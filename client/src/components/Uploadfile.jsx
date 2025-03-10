@@ -1,11 +1,13 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import axios from "axios"
-import { useProfile } from '../context/userpicrender';
+// import { useProfile } from '../context/userpicrender';
+// import {userprofileContext} from "../context/userpicrender"
 
 export default function Uploadfile({ showAlert }) {
     const [file, setFile] = useState(null);
-    const [profile, setProfile] = useProfile()
+    // const [profile, setProfile] = useProfile()
+    //   const {userprofile,profile}=useContext(userprofileContext)
     const handleupload = async (e) => {
         const selectedFile = e.target.files[0]; // ✅ Get the file correctly
         if (!selectedFile) {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect,useContext } from 'react'
 import pagelogo from "../assets/pptai_logo.jpeg"
 import "../App.css"
 import { useLocation } from 'react-router-dom'
@@ -8,34 +8,38 @@ import loder from "../assets/loder.gif"
 import user from "../assets/user.gif"
 import hambarger from "../assets/hambargar.png"
 import close from "../assets/close.png"
+import {userprofileContext} from "../context/userpicrender"
 export default function Navbar({ startLoader, showuser }) {
   const location = useLocation()
   const [menu, setmenu] = useState(true)
   const [userloder, setuserloder] = useState(true)
   const [userpic, setuserpic] = useState({})
   const [pic, setpic] = useState(false)
+  const {userprofile,profile}=useContext(userprofileContext)
+  const fecthuserpic = async () => {
+    const url = `${import.meta.env.VITE_BACKEND_URL}/api/v3/userpic/sendfrontend`
+    const token = localStorage.getItem("auth-token")
+    const res = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token,
+      }
+
+    })
+    const data = await res.json()
+    console.log(data)
+    setuserpic(data)
+    setpic(true)
+    userprofile()
+
+  }
   useEffect(() => {
-    const fecthuserpic = async () => {
-      const url = `${import.meta.env.VITE_BACKEND_URL}/api/v3/userpic/sendfrontend`
-      const token = localStorage.getItem("auth-token")
-      const res = await fetch(url, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": token,
-        }
 
-      })
-      const data = await res.json()
-      console.log(data)
-      setuserpic(data)
-
-
-      setpic(true)
-
-    }
     fecthuserpic()
+    console.log(profile)
   }, [])
+
   const handlemaue = () => {
     setmenu(false)
   }
