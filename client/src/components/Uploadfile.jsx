@@ -1,9 +1,11 @@
 import React from 'react'
 import { useState } from 'react';
 import axios from "axios"
+import { useProfile } from '../context/userpicrender';
 
 export default function Uploadfile({ showAlert }) {
     const [file, setFile] = useState(null);
+    const [profile, setProfile] = useProfile()
     const handleupload = async (e) => {
         const selectedFile = e.target.files[0]; // ✅ Get the file correctly
         if (!selectedFile) {
@@ -25,6 +27,7 @@ export default function Uploadfile({ showAlert }) {
             showAlert("Profile picture updated!", "success");
             // const data= await res.json()
             console.log(res.data.imgurl);
+
         } catch (error) {
             console.log(error);
             showAlert("Error uploading profile picture", "error");
