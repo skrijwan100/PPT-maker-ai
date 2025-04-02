@@ -38,8 +38,7 @@ export default function Uploadfile({ showAlert }) {
     return (
         <div>
             <h1 style={{color:"white"}}>Upload your Profile pic </h1>
-            <input type="file" accept='image/*'onChange={handleupload}  />
-            {/* <button onClick={(e) => handleupload(e)} type="submit">Upload your pic</button> */}
+            <input type="file" accept='image/*' onChange={handleupload}  />
         </div>
     )
 }
