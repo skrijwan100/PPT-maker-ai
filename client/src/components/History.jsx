@@ -49,36 +49,39 @@ export default function History({showAlert}) {
     }
     return (
         <>
-            <div style={{ color: "white", marginLeft:"10px" }}>
-                <h1 style={{ textAlign: "center", fontFamily: "Rubik Vinyl", color: "#680ce7", fontSize: "60px" }}>History</h1>
-                {!userhistory?<div style={{fontSize:"30px",color:"#680ce7", textAlign:"center",fontFamily:"monospace"}}>No history to show.</div>:userhistory.map((data,index) => (
-
-                    <div key={data._id} style={{display:"flex",flexDirection:"column",gap:"17px",marginBottom:"17px"}}>
-                        <div>
-                           <h1 style={{color:"yellow"}}>{++index}.Topic: {data.topicname}</h1>
-                            
-
-                        </div>
-                        <div>
-                           <h2 style={{color:"#680ce7"}}>Slide number: {data.slidenumber}</h2>
-
-                        </div>
-                        <div>
-                            <h2 style={{color:"#ff3155",marginBottom:"10px"}}>Responce:</h2>
-                            <div style={{fontSize:"20px"}}>
-                            <ReactMarkdown>{data.responce}</ReactMarkdown> 
-                            </div>
-                   
-                        </div>
-                        <div className="button">
-                            <button onClick={(e)=>handledelte(e,data._id)} className='deltetbtn'>Delete history</button>
-                        </div>
-
-                    </div>
-
-
-                ))} 
+             <div className="container-fluid">
+    <h1 className="page-title">History</h1>
+    
+    {!userhistory ? 
+      <div className="no-history">No history to show.</div> 
+      : 
+      userhistory.map((data, index) => (
+        <div key={data._id} className="history-card">
+          <div>
+            <h1 className="topic-title">{++index}. Topic: {data.topicname}</h1>
+          </div>
+          
+          <div>
+            <h2 className="slide-number">Slide number: {data.slidenumber}</h2>
+          </div>
+          
+          <div>
+            <h2 className="response-title">Response:</h2>
+            <div className="response-content">
+              <ReactMarkdown>{data.responce}</ReactMarkdown> 
             </div>
+          </div>
+          
+          <div className="button">
+            <button 
+              onClick={(e)=>handledelte(e,data._id)} 
+              className="delete-btn"
+            >Delete history</button>
+          </div>
+        </div>
+      ))
+    } 
+  </div>
         </>
     )
 }

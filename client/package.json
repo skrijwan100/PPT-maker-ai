@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
+    "@tailwindcss/vite": "^4.1.7",
     "axios": "^1.8.1",
     "convert-css-color-name-to-hex": "^0.1.1",
     "generative-ai": "^0.1.4",
@@ -19,7 +20,8 @@
     "react-dom": "^18.3.1",
     "react-markdown": "^9.0.3",
     "react-router-dom": "^7.1.1",
-    "sweetalert2": "^11.15.10"
+    "sweetalert2": "^11.15.10",
+    "tailwindcss": "^4.1.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

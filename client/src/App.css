@@ -243,3 +243,166 @@
   }
 
   }
+
+/* history page */
+ .container-fluid {
+      color: white;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--background-dark);
+      background-image: linear-gradient(135deg, rgba(104, 12, 231, 0.1) 0%, rgba(0, 0, 0, 0.8) 100%);
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    
+    .page-title {
+      text-align: center;
+      font-family: 'Rubik Vinyl', cursive;
+      color: var(--primary-color);
+      font-size: clamp(30px, 6vw, 60px);
+      margin-bottom: 30px;
+      text-shadow: 0 0 10px rgba(104, 12, 231, 0.5);
+      letter-spacing: 2px;
+      position: relative;
+    }
+    
+    .page-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    }
+    
+    .no-history {
+      font-size: clamp(20px, 4vw, 30px);
+      color: var(--primary-color);
+      text-align: center;
+      font-family: monospace;
+      padding: 40px;
+      border-radius: 12px;
+      background: var(--card-bg);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { opacity: 0.7; }
+      50% { opacity: 1; }
+      100% { opacity: 0.7; }
+    }
+    
+    .history-card {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(12px, 2vw, 20px);
+      margin-bottom: clamp(20px, 3vw, 30px);
+      padding: 24px;
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border-left: 4px solid var(--primary-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .history-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+    
+    .topic-title {
+      color: var(--highlight);
+      font-size: clamp(20px, 4vw, 28px);
+      margin: 0;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .slide-number {
+      color: var(--primary-color);
+      font-size: clamp(18px, 3vw, 24px);
+      margin: 0;
+      font-weight: 500;
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(104, 12, 231, 0.1);
+      border-radius: 20px;
+    }
+    
+    .response-title {
+      color: var(--accent-color);
+      margin-bottom: 10px;
+      font-size: clamp(18px, 3vw, 24px);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+    
+    .response-title::before {
+      content: '›';
+      margin-right: 8px;
+      font-size: 1.2em;
+    }
+    
+    .response-content {
+      font-size: clamp(16px, 2.5vw, 20px);
+      word-break: break-word;
+      text-wrap: wrap;
+      line-height: 1.6;
+      padding: 10px 5px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+    }
+    
+    .delete-btn {
+      width: fit-content;
+      padding: 10px 20px;
+      font-size: clamp(14px, 2vw, 16px);
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+      font-weight: 500;
+    }
+    
+    .delete-btn::before {
+      content: '×';
+      margin-right: 8px;
+      font-size: 1.2em;
+    }
+    
+    .delete-btn:hover {
+      background-color: #d5173a;
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 49, 85, 0.4);
+    }
+    
+    /* Responsive adjustments */
+    @media screen and (max-width: 768px) {
+      .container-fluid {
+        padding: 15px 10px;
+      }
+      
+      .history-card {
+        padding: 15px;
+      }
+    }
+    
+    @media screen and (min-width: 1200px) {
+      .history-card {
+        transition: transform 0.3s ease;
+      }
+      
+      .history-card:hover {
+        transform: translateY(-8px) scale(1.02);
+      }
+    }
