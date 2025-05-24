@@ -73,7 +73,7 @@ export default function Navbar({ startLoader, showuser }) {
         <div className="logo">
           <img className='logoimg' src={pagelogo} alt="" style={{ height: "60px", width: "60px", borderRadius: "50%", cursor: "pointer" }} />
         </div>
-        <div className={menu ? "hamhide" : "hamshow"} style={{ display: "none", height: "190px", width: "170px", position: "fixed", left: "54vw", backdropFilter: "blur(30px)", borderRadius: "20p" }}>
+        <div className={menu ? "hamhide" : "hamshow"} style={{ display: "none", height: "225px", width: "170px", position: "fixed", left: "54vw", backdropFilter: "blur(30px)", borderRadius: "10px",zIndex:"2" ,border:"1px solid #056e87"}}>
           <div style={{ display: "flex", justifyContent: "end" }}>
 
             <img onClick={handleclose} style={{ height: "43px", width: "43px" }} src={close} alt="" />
@@ -81,7 +81,8 @@ export default function Navbar({ startLoader, showuser }) {
           <ul style={{ listStyle: "none", gap: "5px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
             <Link to="/" style={{ textDecoration: "none" }}><li onClick={location.pathname === "/" ? null : handleclick} className={`pagebtn ${location.pathname === "/" ? "page-active" : ""}`}>Home</li></Link>
             <Link to="/about" style={{ textDecoration: "none" }}><li onClick={location.pathname === "/about" ? null : handleclick} className={`pagebtn ${location.pathname === "/about" ? "page-active" : ""}`}>About</li></Link>
-          </ul>
+            <Link to="/picupload" style={{ textDecoration: "none" }}><li onClick={location.pathname === "/picupload" ? null : handleclick} className={`pagebtn ${location.pathname === "/picupload" ? "page-active" : ""}`}>Uploadpic</li></Link>
+                  </ul>
           {localStorage.getItem("auth-token") ? userloder ? <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "7px" }}><div onClick={handleuserclick} style={{ height: "42px", width: "42px", borderRadius: "50%", border: "2px solid #680ce7", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><img style={{ height: "35px", width: "35px" }} src={user} alt="" /></div></div> : <div style={{ textAlign: "center" }}><img src={loder} style={{ width: '50px', height: '50px' }}alt="" /></div> : <div className="" style={{ display: "flex", gap: "4px", justifyContent: "space-evenly", marginTop: "9px" }}>
             <Link to="/singup">  <button onClick={location.pathname === "/singup" ? null : handleclick} className='loginbtn' style={{ height: "40px", width: "75px", borderRadius: "10px", outline: "none", border: "none", backgroundColor: "white", cursor: "pointer", color: "#680ce7" }}>Singup</button></Link>
             <Link to="/login">  <button onClick={location.pathname === "/login" ? null : handleclick} className='loginbtn' style={{ height: "40px", width: "75px", borderRadius: "10px", outline: "none", border: "none", backgroundColor: "white", cursor: "pointer", color: "#680ce7" }}>Login</button></Link>
