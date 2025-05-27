@@ -65,6 +65,7 @@ export default function App({ showAlert, startLoader }) {
   slideContent.forEach((content) => {
     const slide = pptx.addSlide();
     slide.background = { color: ppthexcolor, transparency: 50 };
+    slide.slideNumber = { x: "90%", y: "90%" };
     slide.addText(content.title, { 
       x: 0.5, 
       y: 0.5, 
