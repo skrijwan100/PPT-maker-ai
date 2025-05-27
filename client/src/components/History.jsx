@@ -49,8 +49,8 @@ export default function History({ showAlert }) {
   }
   return (
     <>
-      <div className="container-fluid">
         <h1 className="page-title">History</h1>
+      <div className="container-fluid">
 
         {!userhistory ?
           <div className="no-history">No history to show.</div>

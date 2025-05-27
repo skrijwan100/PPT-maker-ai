@@ -261,10 +261,10 @@
     .page-title {
       text-align: center;
       font-family: 'Rubik Vinyl', cursive;
-      color: var(--primary-color);
+     color: rgb(104, 12, 231);
       font-size: clamp(30px, 6vw, 60px);
       margin-bottom: 30px;
-      text-shadow: 0 0 10px rgba(104, 12, 231, 0.5);
+      /* text-shadow: 0 0 10px rgba(104, 12, 231, 0.5); */
       letter-spacing: 2px;
       position: relative;
     }
