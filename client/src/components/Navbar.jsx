@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import pagelogo from "../assets/pptai_logo.jpeg"
 import "../App.css"
 import { useLocation } from 'react-router-dom'
@@ -8,14 +8,14 @@ import loder from "../assets/loder.gif"
 import user from "../assets/user.gif"
 import hambarger from "../assets/hambargar.png"
 import close from "../assets/close.png"
-import {userprofileContext} from "../context/userpicrender"
+import { userprofileContext } from "../context/userpicrender"
 export default function Navbar({ startLoader, showuser }) {
   const location = useLocation()
   const [menu, setmenu] = useState(true)
   const [userloder, setuserloder] = useState(true)
   const [userpic, setuserpic] = useState({})
   const [pic, setpic] = useState(false)
-  const {userprofile,profile}=useContext(userprofileContext)
+  const { userprofile, profile } = useContext(userprofileContext)
   const fecthuserpic = async () => {
     const url = `${import.meta.env.VITE_BACKEND_URL}/api/v3/userpic/sendfrontend`
     const token = localStorage.getItem("auth-token")
@@ -73,7 +73,7 @@ export default function Navbar({ startLoader, showuser }) {
         <div className="logo">
           <img className='logoimg' src={pagelogo} alt="" style={{ height: "60px", width: "60px", borderRadius: "50%", cursor: "pointer" }} />
         </div>
-        <div className={menu ? "hamhide" : "hamshow"} style={{ display: "none", height: "225px", width: "170px", position: "fixed", left: "54vw", backdropFilter: "blur(30px)", borderRadius: "10px",zIndex:"2" ,border:"1px solid #056e87"}}>
+        <div className={menu ? "hamhide" : "hamshow"} style={{ display: "none", height: "225px", width: "170px", position: "fixed", left: "54vw", backdropFilter: "blur(30px)", borderRadius: "10px", zIndex: "2", border: "1px solid #056e87" }}>
           <div style={{ display: "flex", justifyContent: "end" }}>
 
             <img onClick={handleclose} style={{ height: "43px", width: "43px" }} src={close} alt="" />
@@ -82,8 +82,14 @@ export default function Navbar({ startLoader, showuser }) {
             <Link to="/" style={{ textDecoration: "none" }}><li onClick={location.pathname === "/" ? null : handleclick} className={`pagebtn ${location.pathname === "/" ? "page-active" : ""}`}>Home</li></Link>
             <Link to="/about" style={{ textDecoration: "none" }}><li onClick={location.pathname === "/about" ? null : handleclick} className={`pagebtn ${location.pathname === "/about" ? "page-active" : ""}`}>About</li></Link>
             <Link to="/picupload" style={{ textDecoration: "none" }}><li onClick={location.pathname === "/picupload" ? null : handleclick} className={`pagebtn ${location.pathname === "/picupload" ? "page-active" : ""}`}>Uploadpic</li></Link>
-                  </ul>
-          {localStorage.getItem("auth-token") ? userloder ? <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "7px" }}><div onClick={handleuserclick} style={{ height: "42px", width: "42px", borderRadius: "50%", border: "2px solid #680ce7", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}><img style={{ height: "35px", width: "35px" }} src={user} alt="" /></div></div> : <div style={{ textAlign: "center" }}><img src={loder} style={{ width: '50px', height: '50px' }}alt="" /></div> : <div className="" style={{ display: "flex", gap: "4px", justifyContent: "space-evenly", marginTop: "9px" }}>
+          </ul>
+          {localStorage.getItem("auth-token") ? userloder ? <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "7px" }}><div onClick={handleuserclick} style={{ height: "42px", width: "42px", borderRadius: "50%", border: "2px solid #680ce7", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>{pic && userpic.picurl ? (
+          <div>
+             <img style={{ height: "60px", width: "60px", borderRadius: "50%", cursor: "pointer" }} src={`${userpic.picurl}`} alt="User Pic" />
+          </div>
+        ) : (
+          <p style={{ color: "white", fontSize: "10px" }}>No image available</p>
+        )}</div></div> : <div style={{ textAlign: "center" }}><img src={loder} style={{ width: '50px', height: '50px' }} alt="" /></div> : <div className="" style={{ display: "flex", gap: "4px", justifyContent: "space-evenly", marginTop: "9px" }}>
             <Link to="/singup">  <button onClick={location.pathname === "/singup" ? null : handleclick} className='loginbtn' style={{ height: "40px", width: "75px", borderRadius: "10px", outline: "none", border: "none", backgroundColor: "white", cursor: "pointer", color: "#680ce7" }}>Singup</button></Link>
             <Link to="/login">  <button onClick={location.pathname === "/login" ? null : handleclick} className='loginbtn' style={{ height: "40px", width: "75px", borderRadius: "10px", outline: "none", border: "none", backgroundColor: "white", cursor: "pointer", color: "#680ce7" }}>Login</button></Link>
           </div>}
@@ -98,12 +104,12 @@ export default function Navbar({ startLoader, showuser }) {
           </ul>
         </div>
         {localStorage.getItem("auth-token") ? <div className="all-button" onClick={handleuserclick} style={{ height: "42px", width: "42px", borderRadius: "50%", border: "2px solid #680ce7", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>  {pic && userpic.picurl ? (
-                <div>
-                   {!userloder?<div><img src={loder} style={{ width: '50px', height: '50px' }}alt="" /></div> :<img  style={{ height: "60px", width: "60px", borderRadius: "50%", cursor: "pointer" }} src={`${userpic.picurl}`} alt="User Pic" />}
-                </div>
-            ) : (
-                <p style={{ color: "white",fontSize:"10px" }}>No image available</p>
-            )}</div> : <div className="all-button" style={{ display: "flex", gap: "4px", justifyContent: "center" }}>
+          <div>
+            {!userloder ? <div><img src={loder} style={{ width: '50px', height: '50px' }} alt="" /></div> : <img style={{ height: "60px", width: "60px", borderRadius: "50%", cursor: "pointer" }} src={`${userpic.picurl}`} alt="User Pic" />}
+          </div>
+        ) : (
+          <p style={{ color: "white", fontSize: "10px" }}>No image available</p>
+        )}</div> : <div className="all-button" style={{ display: "flex", gap: "4px", justifyContent: "center" }}>
           <Link to="/singup">  <button onClick={location.pathname === "/singup" ? null : handleclick} className='loginbtn' style={{ height: "40px", width: "100px", borderRadius: "10px", outline: "none", border: "none", backgroundColor: "white", cursor: "pointer", color: "#680ce7" }}>Singup</button></Link>
           <Link to="/login">  <button onClick={location.pathname === "/login" ? null : handleclick} className='loginbtn' style={{ height: "40px", width: "100px", borderRadius: "10px", outline: "none", border: "none", backgroundColor: "white", cursor: "pointer", color: "#680ce7" }}>Login</button></Link>
         </div>}
