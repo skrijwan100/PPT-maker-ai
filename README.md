@@ -9,7 +9,6 @@
    npm install
    npm start dev
    ```
-----
-use it
+
 
    
