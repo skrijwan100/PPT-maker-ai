@@ -80,7 +80,7 @@ export default function Navbar({ startLoader, showuser }) {
           </div>
           <ul style={{ listStyle: "none", gap: "5px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
             <Link to="/" style={{ textDecoration: "none" }}><li onClick={location.pathname === "/" ? null : handleclick} className={`pagebtn ${location.pathname === "/" ? "page-active" : ""}`}>Home</li></Link>
-            <Link to="/about" style={{ textDecoration: "none" }}><li onClick={location.pathname === "/about" ? null : handleclick} className={`pagebtn ${location.pathname === "/about" ? "page-active" : ""}`}>About</li></Link>
+            <Link to="/about" style={{ textDecoration: "none" }}><li onClick={location.pathname === "/about" ? null : handleclick} className={`pagebtn ${location.pathname === "/about" ? "page-active" : ""}`}>Feedback</li></Link>
             <Link to="/picupload" style={{ textDecoration: "none" }}><li onClick={location.pathname === "/picupload" ? null : handleclick} className={`pagebtn ${location.pathname === "/picupload" ? "page-active" : ""}`}>Uploadpic</li></Link>
           </ul>
           {localStorage.getItem("auth-token") ? userloder ? <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "7px" }}><div onClick={handleuserclick} style={{ height: "42px", width: "42px", borderRadius: "50%", border: "2px solid #680ce7", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>{pic && userpic.picurl ? (
@@ -99,7 +99,7 @@ export default function Navbar({ startLoader, showuser }) {
         <div className="pages">
           <ul style={{ display: "flex", listStyle: "none", gap: "20px" }}>
             <Link to="/" style={{ textDecoration: "none" }}><li onClick={location.pathname === "/" ? null : handleclick} className={`pagebtn ${location.pathname === "/" ? "page-active" : ""}`}>Home</li></Link>
-            <Link to="/about" style={{ textDecoration: "none" }}><li onClick={location.pathname === "/about" ? null : handleclick} className={`pagebtn ${location.pathname === "/about" ? "page-active" : ""}`}>About</li></Link>
+            <Link to="/about" style={{ textDecoration: "none" }}><li onClick={location.pathname === "/about" ? null : handleclick} className={`pagebtn ${location.pathname === "/about" ? "page-active" : ""}`}>Feedback</li></Link>
             <Link to="/picupload" style={{ textDecoration: "none" }}><li onClick={location.pathname === "/picupload" ? null : handleclick} className={`pagebtn ${location.pathname === "/picupload" ? "page-active" : ""}`}>Uploadpic</li></Link>
           </ul>
         </div>

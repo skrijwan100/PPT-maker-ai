@@ -18,6 +18,7 @@ app.use("/upload", express.static("upload"));
 app.use("/api/v1/userauth",require("./routes/userauth"));
 app.use("/api/v2/userhistory",require("./routes/userhistory"));
 app.use("/api/v3/userpic",require("./routes/userupload"));
+app.use("/api/v4/feedback",require("./routes/feedback"))
 
 app.get("/",(req,res)=>{
   return res.status(200).json({"run":"Your code is running"});

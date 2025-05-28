@@ -72,7 +72,7 @@ export default function App() {
       <Usermodal usermodal={usermodal} startLoader={startLoader} />
     <Routes>
       <Route path='/' element={<Mainpage showuser={showuser} showAlert={showAlert} startLoader={startLoader}  />} />
-      <Route path='/about' element={<About/>} />
+      <Route path='/about' element={<About showAlert={showAlert}/>} />
       <Route path='/login' element={<Login showAlert={showAlert}/>} />
       <Route path='/singup' element={<Singup showAlert={showAlert}/>} />
       <Route path='/history' element={<History showAlert={showAlert}/>} />
