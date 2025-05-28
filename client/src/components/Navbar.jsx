@@ -73,7 +73,7 @@ export default function Navbar({ startLoader, showuser }) {
         <div className="logo">
           <img className='logoimg' src={pagelogo} alt="" style={{ height: "60px", width: "60px", borderRadius: "50%", cursor: "pointer" }} />
         </div>
-        <div className={menu ? "hamhide" : "hamshow"} style={{ display: "none", height: "225px", width: "170px", position: "fixed", left: "54vw", backdropFilter: "blur(30px)", borderRadius: "10px", zIndex: "2", border: "1px solid #056e87" }}>
+        <div className={menu ? "hamhide" : "hamshow"} style={{ display: "none", height: "235px", width: "170px", position: "fixed", left: "54vw", backdropFilter: "blur(30px)", borderRadius: "10px", zIndex: "2", border: "1px solid #056e87" }}>
           <div style={{ display: "flex", justifyContent: "end" }}>
 
             <img onClick={handleclose} style={{ height: "43px", width: "43px" }} src={close} alt="" />
@@ -83,7 +83,7 @@ export default function Navbar({ startLoader, showuser }) {
             <Link to="/about" style={{ textDecoration: "none" }}><li onClick={location.pathname === "/about" ? null : handleclick} className={`pagebtn ${location.pathname === "/about" ? "page-active" : ""}`}>Feedback</li></Link>
             <Link to="/picupload" style={{ textDecoration: "none" }}><li onClick={location.pathname === "/picupload" ? null : handleclick} className={`pagebtn ${location.pathname === "/picupload" ? "page-active" : ""}`}>Uploadpic</li></Link>
           </ul>
-          {localStorage.getItem("auth-token") ? userloder ? <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "7px" }}><div onClick={handleuserclick} style={{ height: "42px", width: "42px", borderRadius: "50%", border: "2px solid #680ce7", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>{pic && userpic.picurl ? (
+          {localStorage.getItem("auth-token") ? userloder ? <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "15px" }}><div onClick={handleuserclick} style={{ height: "42px", width: "42px", borderRadius: "50%", border: "2px solid #680ce7", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>{pic && userpic.picurl ? (
           <div>
              <img style={{ height: "60px", width: "60px", borderRadius: "50%", cursor: "pointer" }} src={`${userpic.picurl}`} alt="User Pic" />
           </div>
