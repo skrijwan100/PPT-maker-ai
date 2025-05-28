@@ -4,21 +4,23 @@ export default function Feedback({ showAlert }) {
     const [feedbackdetiles, setFeedbackdetiles] = useState({ username: "", email: "", message: "" })
     const [loder,setLoder]=useState(false)
     const onchange = (e) => {
-        setFeedbackdetiles({ ...Feedback, [e.target.name]: e.target.value })
+        setFeedbackdetiles({ ...feedbackdetiles, [e.target.name]: e.target.value })
     }
     const handlefeedback = async (e) => {
         e.preventDefault();
         setLoder(true)
         const url = `${import.meta.env.VITE_BACKEND_URL}/api/v4/feedback/adduserfeedback`
-        const responce = await fetch(url, {
+        // console.log(feedbackdetiles.message ,feedbackdetiles.email,feedbackdetiles.username)
+        const response = await fetch(url, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({ username: feedbackdetiles.username, email: feedbackdetiles.email, message: feedbackdetiles.message })
         })
-        const data = await responce.json()
-        console.log(data)
+        const data = await response.json()
+        // console.log(data)
+        // console.log("hooooooo")
         if (data.status) {
             setFeedbackdetiles({ username: "", email: "", message: "" })
             setLoder(false)
