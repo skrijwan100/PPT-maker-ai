@@ -103,7 +103,7 @@ export default function App({ showAlert, startLoader }) {
     }
     setshowloder(true)
     const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", role: "I am a PowerPoint presentation creator AI designed to assist in generating structured slide content for your website. My responses will always follow a clear and professional format, with content segmented into slides. Each slide will have a title and body, and optional elements like bullet points, images, or charts can be specified upon request" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash", role: "I am a PowerPoint presentation creator AI designed to assist in generating structured slide content for your website. My responses will always follow a clear and professional format, with content segmented into slides. Each slide will have a title and body, and optional elements like bullet points, images, or charts can be specified upon request" });
 
     const prompt = `${Topic.tname} create ${Topic.slidenumber} slide on this topic for my ppt and give response in a way so each slide has a clear title and structured content.`;
 
