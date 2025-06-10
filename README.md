@@ -10,5 +10,4 @@
    npm start dev
    ```
 
-   rtiherthrthirehithr
    
