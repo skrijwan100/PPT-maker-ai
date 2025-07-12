@@ -84,7 +84,7 @@ export default function Navbar({ startLoader, showuser }) {
             <Link to="/picupload" style={{ textDecoration: "none" }}><li onClick={location.pathname === "/picupload" ? null : handleclick} className={`pagebtn ${location.pathname === "/picupload" ? "page-active" : ""}`}>Uploadpic</li></Link>
           </ul>
           {localStorage.getItem("auth-token") ? userloder ? <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "15px" }}><div onClick={handleuserclick} style={{ height: "42px", width: "42px", borderRadius: "50%", border: "2px solid #680ce7", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>{pic && userpic.picurl ? (
-          <div style={{marginTop:"15px"}}>
+          <div >
              <img style={{ height: "60px", width: "60px", borderRadius: "50%", cursor: "pointer",objectFit:"cover" }} src={`${userpic.picurl}`} alt="User Pic" />
           </div>
         ) : (
@@ -104,7 +104,7 @@ export default function Navbar({ startLoader, showuser }) {
           </ul>
         </div>
         {localStorage.getItem("auth-token") ? <div className="all-button" onClick={handleuserclick} style={{ height: "42px", width: "42px", borderRadius: "50%", border: "2px solid #680ce7", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer" }}>  {pic && userpic.picurl ? (
-          <div>
+          <div style={{marginTop:"15px"}}>
             {!userloder ? <div style={{marginTop:"15px"}}><img src={loder} style={{ width: '50px', height: '50px' }} alt="" /></div> : <img style={{ height: "60px", width: "60px", borderRadius: "50%", cursor: "pointer",objectFit:"cover" }} src={`${userpic.picurl}`} alt="User Pic" />}
           </div>
         ) : (
